@@ -18,11 +18,11 @@ public class CategoriaDAO
         try 
         {
             String SQL = "INSERT INTO categorias (nombre) VALUES (?);";
-            Connection con = Conexion.conectar();
-            PreparedStatement st = con.prepareStatement(SQL);
+            Connection con = Conexion.conectar();//Conectamos con la base de datos
+            PreparedStatement st = con.prepareStatement(SQL);//Preparamos la sentencia SQL para su procesado
             st.setString(1, c.getNombre());
             
-            if(st.executeUpdate() > 0)
+            if(st.executeUpdate() > 0)//Ejecutamos la sentencia y comprobamos su correcto funcionamiento
                 return true;
             else
                 return false;

@@ -9,13 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%--Link de Bootstrap que permite que se lean adecuadamente sus directivas--%>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <title>Registro de Categorias</title>
         
     </head>
     <body>
-        <%@include file="menu.jsp"%>
+        <%@include file="menu.jsp"%><%--Incluimos el menu al inicio de la pagina--%>
         <div class="form-control">
             <div class="table-header">
                 Desde aqui puede añadir o eliminar una Categoria
@@ -43,6 +44,7 @@
                 </form>
                 <br>
                 <%=(request.getAttribute("mensaje") != null ? request.getAttribute("mensaje"):"")%>
+                <%--Una vez hecho el submit en los botones, recojemos el mensaje de regreso enviados por el controlador--%>
             </div>
         </div>
     </body>

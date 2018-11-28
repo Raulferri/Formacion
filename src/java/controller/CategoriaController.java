@@ -105,6 +105,8 @@ public class CategoriaController extends HttpServlet {
         }
         
         request.getRequestDispatcher("registroCategoria.jsp").forward(request,response);
+        //Aqui se ha utilizado request para devolver la respuesta en vez de response para ahorrar recursos,
+        //por lo general es lo que se suele hacer
     }
 
     /**

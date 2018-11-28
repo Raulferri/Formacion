@@ -40,7 +40,7 @@ public class EditorialDAO
     
     public static boolean eliminar(Editorial edi)
     {
-        String SQL = "DELETE FROM editoriales WHERE nombre = ?;";
+        String SQL = "DELETE FROM editoriales WHERE nombre = ?;";//Cuando hay una interrogacion significa que despues se le tendra que asignat un valor con el setString
         Connection con = Conexion.conectar();
         try 
         {
@@ -65,7 +65,7 @@ public class EditorialDAO
             String SQL = "SELECT * FROM editoriales";
             Connection con = Conexion.conectar();
             PreparedStatement st = con.prepareStatement (SQL); 
-            ResultSet resultado = st.executeQuery();
+            ResultSet resultado = st.executeQuery();//Añade en resultado el valor devuelto por la query(Consulta SQL)
             ArrayList<Editorial> lista = new ArrayList<>();
             Editorial edi;
             
