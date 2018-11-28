@@ -78,13 +78,12 @@ public class LibroController extends HttpServlet {
         String titulo=request.getParameter("titulo");
         String autor=request.getParameter("autor");
         String publicacion=request.getParameter("publicacion");
-        int categoria=Integer.parseInt(request.getParameter("categoria"));
+        int categoria=Integer.parseInt(request.getParameter("categoria"));//Aqui se recibe un String y se convierte a entero con el parseInt
         String editorial=request.getParameter("editorial");
         String descripcion=request.getParameter("descripcion");
         
-        
+        //Se llama al modelo para setearle los valores escritos
         Libro lib = new Libro();
-        
         lib.setIsbn(isbn);
         lib.setTitulo(titulo);
         lib.setNombre_autor(autor);
@@ -99,28 +98,46 @@ public class LibroController extends HttpServlet {
         * se puede tambien y es lo que hemos hecho declarar un value= en los botones del jsp,
         * ahorrandonos asi esta opcion de llamar a las acciones precedidas por una letra 
         */
-        if (request.getParameter("Registrar")!= null){
-            if(LibroDAO.registrar(lib)){
+        if (request.getParameter("Registrar")!= null)//Espera a recibir una llamada cuando alguien pulse el boton en la web
+        {
+            if(LibroDAO.registrar(lib))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
+            {
                 request.setAttribute("mensaje","El Libro se ha registrado correctamente");
-            }else{
+            }
+            else
+            {
                 request.setAttribute("mensaje","No se ha podido registrar el libro");
             }
-        }else if (request.getParameter("Actualizar")!= null){
-            if (LibroDAO.actualizar(lib)){
+        }
+        else if (request.getParameter("Actualizar")!= null)//Espera a recibir una llamada cuando alguien pulse el boton en la web
+        {
+            if (LibroDAO.actualizar(lib))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
+            {
                 request.setAttribute("mensaje","Se ha actualizado el Libro correctamente");
-            }else{
+            }
+            else
+            {
                 request.setAttribute("mensaje","Los datos del Libro no se han podido actualizar");
             }
-        }else if (request.getParameter("Eliminar")!= null){
-            if (LibroDAO.eliminar(lib)){
+        }
+        else if (request.getParameter("Eliminar")!= null)//Espera a recibir una llamada cuando alguien pulse el boton en la web
+        {
+            if (LibroDAO.eliminar(lib))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
+            {
                 request.setAttribute("mensaje", "Se ha eliminado el Libro");
-            }else{
+            }
+            else
+            {
                 request.setAttribute("mensaje", "No se ha podido eliminar el Libro");
             }
-        }else{
+        }
+        else
+        {
             request.setAttribute("mensaje", "Acción desconocida");
         }
         request.getRequestDispatcher("registroLibro.jsp").forward(request, response);
+        //Aqui se ha utilizado request para devolver la respuesta en vez de response para ahorrar recursos,
+        //por lo general es lo que se suele hacer
     }
 
     /**
