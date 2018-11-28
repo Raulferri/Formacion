@@ -10,7 +10,7 @@
     </li>
     <br>
     <li>
-        <a href="#"><i class="menu-icon fa fa-caret-right"></i>Registrar Editorial</a>
+        <a href="registroEditorial.jsp"><i class="menu-icon fa fa-caret-right"></i>Registrar Editorial</a>
     </li>
     <br>
     <li>
