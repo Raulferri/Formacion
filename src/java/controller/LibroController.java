@@ -86,11 +86,12 @@ public class LibroController extends HttpServlet {
         Libro lib = new Libro();
         lib.setIsbn(isbn);
         lib.setTitulo(titulo);
+        lib.setDescripcion(descripcion);
         lib.setNombre_autor(autor);
         lib.setPublicacion(publicacion);
+        //Aqui iria la fecha de registro, pero se rellena sola con now, por eso no se pone
         lib.setCodigo_categoria(categoria);
         lib.setNit_editorial(editorial);
-        lib.setDescripcion(descripcion);
         
        /* se puede colocar una variable delante de las acciones como por ejemplo bRegistrar
         * bActualizar o bEliminar y ser consecuentes y colocar la misma letra en el jsp de 

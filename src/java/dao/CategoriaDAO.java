@@ -82,4 +82,27 @@ public class CategoriaDAO //DAO es Data Acces Object
             return null;
         }
     }
+    
+    public static String getCategoria(int cod)//Este metodo sirve para que al listar los libros, podamos obtener los datos de la categoria a la que pertenece el libro en vez de mostrar el codigo de la categoria sin mas
+    {
+        try 
+        {
+            String SQL = "SELECT nombre FROM categorias WHERE codigo=?";
+            Connection con = Conexion.conectar();
+            PreparedStatement st = con.prepareStatement (SQL); 
+            st.setInt(1, cod);
+            ResultSet resultado = st.executeQuery();
+           
+            if (resultado.next())//Si encuentra la categoria devuelve el nombre de la misma
+            {
+               return resultado.getString("nombre");
+            }
+            return "--";//Si no la encuentra devuelve valor vacio para que no pete el programa
+
+        } 
+        catch (SQLException ex) 
+        {
+            return "--";
+        }
+    }
 }

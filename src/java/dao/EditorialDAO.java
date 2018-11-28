@@ -115,4 +115,27 @@ public class EditorialDAO //DAO es Data Acces Object
             return false;
         }
     }
+    
+    public static String getEditorial(String nit)//Este metodo sirve para que al listar los libros, podamos obtener los datos de la editorial a la que pertenece el libro en vez de mostrar el codigo de la editorial sin mas
+    {
+        try 
+        {
+            String SQL = "SELECT nombre FROM editoriales WHERE nit=?";
+            Connection con = Conexion.conectar();
+            PreparedStatement st = con.prepareStatement (SQL); 
+            st.setString(1, nit);
+            ResultSet resultado = st.executeQuery();
+           
+            if (resultado.next())//Si encuentra la editorial devuelve el nombre de la misma
+            {
+               return resultado.getString("nombre");
+            }
+            return "--";//Si no la encuentra devuelve valor vacio para que no pete el programa
+
+        } 
+        catch (SQLException ex) 
+        {
+            return "--";
+        }
+    }
 }
