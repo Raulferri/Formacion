@@ -4,9 +4,17 @@
         <servlet-name>CategoriaController</servlet-name>
         <servlet-class>controller.CategoriaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditorialController</servlet-name>
+        <servlet-class>controller.EditorialController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CategoriaController</servlet-name>
         <url-pattern>/CategoriaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditorialController</servlet-name>
+        <url-pattern>/EditorialController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

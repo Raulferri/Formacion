@@ -25,7 +25,7 @@
                 <form action="CategoriaController" method="post" class="form-horizontal">
                     <br><br>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label no-padding-right">Nombre:</label>
+                        <label class="col-sm-3 control-label no-padding-right">Nombre:</label><%--Todas las opciones dentro de las clases son comandos de bootstrap--%>
                         <div class="col-sm-3">
                             <input type="text" name="nombre" value="" placeholder="Nombre de la categoria"/>
                         </div>

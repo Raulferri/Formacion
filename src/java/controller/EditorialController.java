@@ -1,24 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
-import dao.CategoriaDAO;
+import dao.EditorialDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Categoria;
+import model.Editorial;
 
-/**
- *
+/*
  * @author Arranque 4
  */
-public class CategoriaController extends HttpServlet {
+
+public class EditorialController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +32,10 @@ public class CategoriaController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CategoriaController</title>");            
+            out.println("<title>Servlet EditorialController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CategoriaController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EditorialController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -74,37 +69,59 @@ public class CategoriaController extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         
-        String nombre = request.getParameter("nombre");
-        Categoria c = new Categoria();
-        c.setNombre(nombre);
+        String nit=request.getParameter("nit");
+        String nombre=request.getParameter("nombre");
+        String telefono=request.getParameter("telefono");
+        String direccion=request.getParameter("direccion");
+        String email=request.getParameter("email");
+        String sitioweb=request.getParameter("sitioweb");
         
-        if(request.getParameter("Registrar") != null)
+        Editorial e = new Editorial();
+        e.setNit (nit);
+        e.setNombre (nombre);
+        e.setTelefono (telefono);
+        e.setDireccion (direccion);
+        e.setEmail (email);
+        e.setSitioweb (sitioweb);
+        
+        if (request.getParameter("Registrar")!= null)
         {
-            if(CategoriaDAO.registrar(c))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
+            if(EditorialDAO.registrar(e))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
             {
-                request.setAttribute("mensaje", "La Categoria se ha registrado correctamente");
+                request.setAttribute("mensaje","La Editorial se ha registrado correctamente");
             }
             else
             {
-                request.setAttribute("mensaje", "No se ha podido registrar la Categoria");
+                request.setAttribute("mensaje","No se ha podido registrar la Editorial");
             }
         }
-        else if(request.getParameter("Eliminar") != null)
+        else if (request.getParameter("Actualizar")!= null)
         {
-            if (CategoriaDAO.eliminar(c))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
+            if (EditorialDAO.actualizar(e))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
             {
-                request.setAttribute("mensaje", "Se ha eliminado la Categoria");
-            }else
+                request.setAttribute("mensaje","Se ha actualizado la Editorial correctamente");
+            }
+            else
             {
-                request.setAttribute("mensaje", "No se ha podido eliminar la Categoria");
+                request.setAttribute("mensaje","Los datos de la Editorial no se han podido actualizar");
+            }
+        }
+        else if (request.getParameter("Eliminar")!= null)
+        {
+            if (EditorialDAO.eliminar(e))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
+            {
+                request.setAttribute("mensaje", "Se ha eliminado la Editorial");
+            }
+            else
+            {
+                request.setAttribute("mensaje", "No se ha podido eliminar la Editorial");
             }
         }
         else
         {
-            request.setAttribute("mensaje", "Accion desconocida");
+            request.setAttribute("mensaje", "Acción desconocida");
         }
-        
-        request.getRequestDispatcher("registroCategoria.jsp").forward(request,response);
+        request.getRequestDispatcher("registroEditorial.jsp").forward(request, response);
         //Aqui se ha utilizado request para devolver la respuesta en vez de response para ahorrar recursos,
         //por lo general es lo que se suele hacer
     }
