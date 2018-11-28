@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label no-padding-right">Descripcion:</label><%--Todas las opciones dentro de las clases son comandos de bootstrap--%>
                         <div class="col-sm-3">
-                            <input type="text" name="descripcion" value="" placeholder="Descripcion del telefono"/>
+                            <textarea name="descripcion" rows="4" cols="43" placeholder="Descripcion del libro"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
