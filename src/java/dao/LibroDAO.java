@@ -22,7 +22,7 @@ public class LibroDAO //DAO es Data Acces Object
     {
         try 
         {
-            String SQL = "INSERT INTO libros VALUES (?,?,?,?,?,?,(select now()),?,?);";//La sentencia now devuelve la fecha y la hora actuales(se utiliza para guardar la fecha y hora en las que se ha registrado el libro)
+            String SQL = "INSERT INTO libros VALUES (?,?,?,?,?,(select now()),?,?);";//La sentencia now devuelve la fecha y la hora actuales(se utiliza para guardar la fecha y hora en las que se ha registrado el libro)
             Connection con = Conexion.conectar();//Conectamos con la base de datos
             PreparedStatement st = con.prepareStatement(SQL);//Preparamos la sentencia SQL para su procesado
             st.setString(1, lib.getIsbn());
@@ -30,9 +30,8 @@ public class LibroDAO //DAO es Data Acces Object
             st.setString(3, lib.getDescripcion());
             st.setString(4, lib.getNombre_autor());
             st.setString(5, lib.getPublicacion());
-            st.setString(6, lib.getFecha_registro());
-            st.setInt(7, lib.getCodigo_categoria());
-            st.setString(8, lib.getNit_editorial());
+            st.setInt(6, lib.getCodigo_categoria());
+            st.setString(7, lib.getNit_editorial());
             
             if(st.executeUpdate() > 0)//Ejecutamos la sentencia y comprobamos su correcto funcionamiento
                 return true;

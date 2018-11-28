@@ -11,7 +11,7 @@
     </li>
     <br>
     <li>
-        <a href="#"><i class="menu-icon fa fa-caret-right"></i>Registrar Libro</a>
+        <a href="registroLibro.jsp"><i class="menu-icon fa fa-caret-right"></i>Registrar Libro</a>
     </li>
     <br>
     <li>

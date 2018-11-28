@@ -5,12 +5,14 @@
  */
 package controller;
 
+import dao.LibroDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Libro;
 
 /**
  *
@@ -70,7 +72,55 @@ public class LibroController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
+        String isbn=request.getParameter("isbn");
+        String titulo=request.getParameter("titulo");
+        String autor=request.getParameter("autor");
+        String publicacion=request.getParameter("publicacion");
+        int categoria=Integer.parseInt(request.getParameter("categoria"));
+        String editorial=request.getParameter("editorial");
+        String descripcion=request.getParameter("descripcion");
+        
+        
+        Libro lib = new Libro();
+        
+        lib.setIsbn(isbn);
+        lib.setTitulo(titulo);
+        lib.setNombre_autor(autor);
+        lib.setPublicacion(publicacion);
+        lib.setCodigo_categoria(categoria);
+        lib.setNit_editorial(editorial);
+        lib.setDescripcion(descripcion);
+        
+       /* se puede colocar una variable delante de las acciones como por ejemplo bRegistrar
+        * bActualizar o bEliminar y ser consecuentes y colocar la misma letra en el jsp de 
+        * registroLibro, donde se encuentran los botones con las acciones aqui citadas
+        * se puede tambien y es lo que hemos hecho declarar un value= en los botones del jsp,
+        * ahorrandonos asi esta opcion de llamar a las acciones precedidas por una letra 
+        */
+        if (request.getParameter("Registrar")!= null){
+            if(LibroDAO.registrar(lib)){
+                request.setAttribute("mensaje","El Libro se ha registrado correctamente");
+            }else{
+                request.setAttribute("mensaje","No se ha podido registrar el libro");
+            }
+        }else if (request.getParameter("Actualizar")!= null){
+            if (LibroDAO.actualizar(lib)){
+                request.setAttribute("mensaje","Se ha actualizado el Libro correctamente");
+            }else{
+                request.setAttribute("mensaje","Los datos del Libro no se han podido actualizar");
+            }
+        }else if (request.getParameter("Eliminar")!= null){
+            if (LibroDAO.eliminar(lib)){
+                request.setAttribute("mensaje", "Se ha eliminado el Libro");
+            }else{
+                request.setAttribute("mensaje", "No se ha podido eliminar el Libro");
+            }
+        }else{
+            request.setAttribute("mensaje", "Acción desconocida");
+        }
+        request.getRequestDispatcher("registroLibro.jsp").forward(request, response);
     }
 
     /**
