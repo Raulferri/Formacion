@@ -1,7 +1,7 @@
 <%-- 
     Document   : registroEditorial
     Created on : 28-nov-2018, 11:12:59
-    Author     : Arranque 4
+    Author     :  Raul Ferri
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

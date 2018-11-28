@@ -11,9 +11,9 @@ import model.Categoria;
 
 /**
  *
- * @author Arranque 4
+ * @author Raul Ferri
  */
-public class CategoriaDAO 
+public class CategoriaDAO //DAO es Data Acces Object
 {
     public static boolean registrar(Categoria c)
     {

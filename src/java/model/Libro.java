@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Arranque 4
+ * @author Raul Ferri
  */
 
 public class Libro implements Serializable

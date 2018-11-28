@@ -5,20 +5,18 @@
  */
 package controller;
 
-import dao.CategoriaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Categoria;
 
 /**
  *
  * @author Raul Ferri
  */
-public class CategoriaController extends HttpServlet {
+public class LibroController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +35,10 @@ public class CategoriaController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CategoriaController</title>");            
+            out.println("<title>Servlet LibroController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CategoriaController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LibroController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -72,41 +70,7 @@ public class CategoriaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        
-        String nombre = request.getParameter("nombre");
-        Categoria c = new Categoria();
-        c.setNombre(nombre);
-        
-        if(request.getParameter("Registrar") != null)//Espera a recibir una llamada cuando alguien pulse el boton en la web
-        {
-            if(CategoriaDAO.registrar(c))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
-            {
-                request.setAttribute("mensaje", "La Categoria se ha registrado correctamente");
-            }
-            else
-            {
-                request.setAttribute("mensaje", "No se ha podido registrar la Categoria");
-            }
-        }
-        else if(request.getParameter("Eliminar") != null)//Espera a recibir una llamada cuando alguien pulse el boton en la web
-        {
-            if (CategoriaDAO.eliminar(c))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
-            {
-                request.setAttribute("mensaje", "Se ha eliminado la Categoria");
-            }else
-            {
-                request.setAttribute("mensaje", "No se ha podido eliminar la Categoria");
-            }
-        }
-        else
-        {
-            request.setAttribute("mensaje", "Accion desconocida");
-        }
-        
-        request.getRequestDispatcher("registroCategoria.jsp").forward(request,response);
-        //Aqui se ha utilizado request para devolver la respuesta en vez de response para ahorrar recursos,
-        //por lo general es lo que se suele hacer
+        processRequest(request, response);
     }
 
     /**

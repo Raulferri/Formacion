@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 
 /*
- * @author Arranque 4
+ * @author Raul Ferri
  */
 
 public class Categoria implements Serializable 

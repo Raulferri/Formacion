@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Editorial;
 
 /*
- * @author Arranque 4
+ * @author Raul Ferri
  */
 
 public class EditorialController extends HttpServlet {
@@ -76,6 +76,7 @@ public class EditorialController extends HttpServlet {
         String email=request.getParameter("email");
         String sitioweb=request.getParameter("sitioweb");
         
+        //Se llama al modelo para setearle los valores escritos
         Editorial e = new Editorial();
         e.setNit (nit);
         e.setNombre (nombre);
@@ -84,7 +85,7 @@ public class EditorialController extends HttpServlet {
         e.setEmail (email);
         e.setSitioweb (sitioweb);
         
-        if (request.getParameter("Registrar")!= null)
+        if (request.getParameter("Registrar")!= null)//Espera a recibir una llamada cuando alguien pulse el boton en la web
         {
             if(EditorialDAO.registrar(e))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
             {
@@ -95,7 +96,7 @@ public class EditorialController extends HttpServlet {
                 request.setAttribute("mensaje","No se ha podido registrar la Editorial");
             }
         }
-        else if (request.getParameter("Actualizar")!= null)
+        else if (request.getParameter("Actualizar")!= null)//Espera a recibir una llamada cuando alguien pulse el boton en la web
         {
             if (EditorialDAO.actualizar(e))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
             {
@@ -106,7 +107,7 @@ public class EditorialController extends HttpServlet {
                 request.setAttribute("mensaje","Los datos de la Editorial no se han podido actualizar");
             }
         }
-        else if (request.getParameter("Eliminar")!= null)
+        else if (request.getParameter("Eliminar")!= null)//Espera a recibir una llamada cuando alguien pulse el boton en la web
         {
             if (EditorialDAO.eliminar(e))//Llama a la funcion solicitada y comprueba que se ejecuta correctamente
             {

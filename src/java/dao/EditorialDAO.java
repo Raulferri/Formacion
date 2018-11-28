@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import model.Editorial;
 
 /*
- * @author Arranque 4
+ * @author Raul Ferri
  */
 
-public class EditorialDAO 
+public class EditorialDAO //DAO es Data Acces Object
 {
     public static boolean registrar(Editorial edi)
     {

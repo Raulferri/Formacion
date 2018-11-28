@@ -8,6 +8,10 @@
         <servlet-name>EditorialController</servlet-name>
         <servlet-class>controller.EditorialController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LibroController</servlet-name>
+        <servlet-class>controller.LibroController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CategoriaController</servlet-name>
         <url-pattern>/CategoriaController</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>EditorialController</servlet-name>
         <url-pattern>/EditorialController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LibroController</servlet-name>
+        <url-pattern>/LibroController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
