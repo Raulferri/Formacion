@@ -102,7 +102,7 @@ public class LibroDAO //DAO es Data Acces Object
     {
         try
         {
-            String SQL = "UPDATE libros SET titulo=?,nombre_autor=?,descripcion=?,publicacion=?,codigo_categoria=?,nit_editorial=?  WHERE isbn=?;";
+            String SQL = "UPDATE libros SET titulo=?,descripcion=?,nombre_autor=?,publicacion=?,codigo_categoria=?,nit_editorial=?  WHERE isbn=?;";
             Connection con = Conexion.conectar();//Conectamos con la base de datos
             PreparedStatement st = con.prepareStatement (SQL); //Preparamos la sentencia SQL para su procesado
             
