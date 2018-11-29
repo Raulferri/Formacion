@@ -7,7 +7,7 @@
 <br>
 <ul>
     <li>
-        <a href="index.jsp"><i class="menu-icon fa fa-caret-right"></i>Lista de Libros</a>
+        <a href="listarLibros.jsp"><i class="menu-icon fa fa-caret-right"></i>Lista de Libros</a>
     </li>
     <br>
     <li>

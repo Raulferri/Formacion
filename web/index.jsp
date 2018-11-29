@@ -15,6 +15,6 @@
     </div>
     </head>
     <body>
-        <jsp:forward page="registroCategoria.jsp"></jsp:forward><%--Pagina inicial que se cargara al ejecutar la web--%>
+        <jsp:forward page="listarLibros.jsp"></jsp:forward><%--Pagina inicial que se cargara al ejecutar la web--%>
     </body>
 </html>
